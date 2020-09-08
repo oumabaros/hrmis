@@ -1,0 +1,64 @@
+Tables to create
+1.  AmountBasis
+2.  ApplicationPeriod
+3.  ApprovalStatus
+4.  BalanceEffect
+5.  BankBranch
+6.  BankMain
+7.  Coinage
+8.  CoinageType
+9.  Company
+10. CompanyIdentification
+11. Country
+12. Currency
+13. CurrencyRate
+14. DataOperator
+15. Disability
+16. Employee
+17. EmployeeChargeCenter
+18. EmployeeDependant
+19. EmployeeDisability
+20. EmployeeIdentification
+21. EmployeeLanguage (replace FluencyID with Read/Write/Speak fluencies)
+22. EmployeeMovement
+23. EmployeeMovementDetail
+24. EmployeeNextofkin
+25. EmployeePaymentMode
+26. EmployeeQualification
+27. EmploymentHistory
+28. EngagementTerm
+29. Ethnicity
+30. Fluency
+31. Gender
+32. Hierarchy
+33. HierarchyStructure
+34. Identification
+35. Job
+36. JobDescription
+37. JobGrade
+38. Language
+39. Location
+40. MaritalStatus
+41. Movement (but exclude field "MovementFields")
+42. PaymentBasis
+43. PaymentMode
+44. PayPeriod
+45. PayrollGroup
+46. Probation
+47. PublicHoliday (but rename to "Holiday")
+48. Qualification
+49. Relationship
+50. Religion
+51. SalaryScale
+52. Salutation
+53. Separation
+54. StaffCategory
+55. TimeDuration
+56. WorkWeek
+
+NEW
+1. ChargeCenter
+2. ChargeCenterCode
+3. ChargeCenterCodeDetail
+4. CompanyPaymentMode
+5. MovementField

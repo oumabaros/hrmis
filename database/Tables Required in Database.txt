@@ -1,0 +1,140 @@
+Tables to create
+1.  AmountBasis
+2.  ApplicationPeriod
+3.  ApprovalStatus
+4.  BalanceEffect
+5.  BankBranch
+6.  BankMain
+7. ChargeCenter
+8. ChargeCenterCode
+9. ChargeCenterCodeDetail
+10. Coinage
+11. CoinageType
+12. Company
+13. CompanyIdentification
+14. CompanyPaymentMode
+15. Country
+16. Currency
+17. CurrencyRate
+18. DataOperator
+19. Disability
+20. Employee
+21. EmployeeChargeCenter
+22. EmployeeDependant
+23. EmployeeDisability
+24. EmployeeIdentification
+25. EmployeeLanguage (replace FluencyID with Read/Write/Speak fluencies)
+26. EmployeeMovement
+27. EmployeeMovementDetail
+28. EmployeeNextofkin
+29. EmployeePaymentMode
+30. EmployeeQualification
+31. EmploymentHistory
+32. EngagementTerm
+33. Ethnicity
+34. Fluency
+35. Gender
+36. Hierarchy
+37. HierarchyStructure
+38. Identification
+39. Job
+40. JobDescription
+41. JobGrade
+42. Language
+43. Location
+44. MaritalStatus
+45. Movement (but exclude field "MovementFields")
+46. MovementField
+47. PaymentBasis
+48. PaymentMode
+49. PayrollGroup
+50. Probation
+51. PublicHoliday (but rename to "Holiday")
+52. Qualification
+53. Relationship
+54. Religion
+55. SalaryScale
+56. Salutation
+57. Separation
+58. StaffCategory
+59. TimeDuration
+60. WorkWeek
+
+DEC 2019
+MODIFIED
+1. ApprovalStatus
+2. Employee (add field LineManager, remove DutyStationID)
+3. Holiday
+4. Location
+5. PayrollPeriod (renamed from PayPeriod)
+
+NEW
+01. AbsenceCategory
+02. ApprovalMethod
+03. DrCr
+04. Interest Method
+05. Job Scenario
+06. JobScenario Detail (renamed from ScenarioDetail)
+07. Leavebalance (renamed from EmployeeLeaveBalance)
+08. LeaveCalendar
+09. LeaveCountMethod
+10. LeaveTimeOfDay
+11. LeaveTransaction (renamed from EmployeeLeave)
+12. LeaveTransactionDetail
+13. LeaveType (renamed from Leave)
+14. LoanSchedule
+15. LoanTransaction
+16. LoanType
+17. Payroll Code
+18. PayrollCodeCategory (renamed from TransactionCategory)
+19. Payroll Code Group
+PayrollFunction
+20. PayrollReference Table (renamed from ReferenceTable)
+21. PayrollTransaction (renamed from EmployeeTransaction)
+22. Payslip Text Operation
+23. TaxationType
+24. TransactionApproval
+25. TransactionApproverType
+26. TransactionType
+
+TO BE REVIEWED LATER
+1. Report Field
+2. Role Detail
+3. User Defined Report
+4. User Report
+
+NOT NEEDED
+1.  AspNetRoles
+2.  AspNetUserClaims
+3.  AspNetUserLogins
+4.  AspNetUserRoles
+5.  AspNetUsers
+6.  AuditTrail
+7.  Disbursement time
+8.  DutyStation
+9.  ELMAH_Error
+10. EmployeeDashboard
+11. EmployeeList
+12. FileOrientation
+13. FormP9A
+14. Formula Code
+15. GlobalParameter
+16. GrossPay
+17. Job Qualification
+18. Parameter Scope
+19. Payroll Approval
+20. Payroll code History
+21. Payroll Review
+22. Payroll Step
+23. Payroll Year
+24. Payslip column
+25. Payslip Detail
+26. Process Payroll List
+27. Profile Change
+28. Program License
+29. Program Menu
+30. Program Setting
+31. Program Table
+32. Search Field
+33. Taxability
+34. Taxation Basis

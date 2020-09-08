@@ -1,0 +1,106 @@
+USE [HRMMaster]
+GO
+
+/****** Object:  Table [dbo].[MovementField]    Script Date: 08/Nov/2019 3:29:30 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MovementField](
+	[id] [int] NOT NULL,
+	[MovementID] [int] NULL,
+	[FieldName] [nvarchar](50) NULL,
+	[FieldRank] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[CompanyPaymentMode]    Script Date: 08/Nov/2019 3:29:30 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CompanyPaymentMode](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [int] NOT NULL,
+	[PaymentModeID] [int] NOT NULL,
+	[IsMainPaypoint] [bit] NULL,
+	[BankBranchID] [int] NULL,
+	[PaymentAmount] [decimal](18, 4) NULL,
+	[BankAccountNumber] [nvarchar](50) NULL,
+	[AccountSuf] [nvarchar](10) NULL,
+	[AccountCheckDigit] [nvarchar](10) NULL,
+	[BeneficiaryName] [nvarchar](100) NULL,
+	[PaymentBasisID] [int] NULL,
+	[PhoneNumber] [nvarchar](25) NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_dbo.CompanyPaymentMode] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[ChargeCenter]    Script Date: 08/Nov/2019 3:29:31 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ChargeCenter](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ChargeCenterName] [nvarchar](100) NULL,
+	[ChargeCode1] [int] NULL,
+	[ChargeCode2] [int] NULL,
+	[ChargeCode3] [int] NULL,
+	[ChargeCode4] [int] NULL,
+	[ChargeCode5] [int] NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[ActiveStatus] [bit] NULL,
+ CONSTRAINT [PK_ChargeCenter] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[ChargeCenterCodeDetail]    Script Date: 08/Nov/2019 3:29:31 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ChargeCenterCodeDetail](
+	[id] [int] NOT NULL,
+	[ChargeCenterCodeID] [int] NULL,
+	[ChargeCode] [nvarchar](50) NULL,
+	[ChargeCodeDescription] [nvarchar](150) NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[ChargeCenterCode]    Script Date: 08/Nov/2019 3:29:31 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ChargeCenterCode](
+	[id] [int] NOT NULL,
+	[CodeType] [nvarchar](50) NULL,
+	[ChargeCenterCodeID] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+

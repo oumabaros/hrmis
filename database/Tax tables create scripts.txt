@@ -1,0 +1,152 @@
+EXISTING TABLES TO DELETE:
+PayrollReferenceTable
+TaxationType
+Gift??
+
+NEW TABLES TO CREATE
+TaxMethod
+TaxType
+TaxTypeRefTable
+TaxValueMode
+
+SCRIPT TO DELETE TABLES
+
+USE [HRMIS]
+GO
+
+/****** Object:  Table [dbo].[TaxationType]    Script Date: 02/May/2020 12:29:42 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TaxationType]') AND type in (N'U'))
+DROP TABLE [dbo].[TaxationType]
+GO
+
+/****** Object:  Table [dbo].[PayrollReferenceTable]    Script Date: 02/May/2020 12:29:42 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PayrollReferenceTable]') AND type in (N'U'))
+DROP TABLE [dbo].[PayrollReferenceTable]
+GO
+
+/****** Object:  Table [dbo].[Gift]    Script Date: 02/May/2020 12:29:42 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Gift]') AND type in (N'U'))
+DROP TABLE [dbo].[Gift]
+GO
+
+SCRIPT TO CREATE NEW TABLES
+
+USE [HRMIS]
+GO
+/****** Object:  Table [dbo].[TaxMethod]    Script Date: 02/May/2020 12:34:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TaxMethod](
+	[ID] [int] NOT NULL,
+	[TaxMethodName] [nvarchar](50) NULL,
+ CONSTRAINT [PK_TaxMethod] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TaxType]    Script Date: 02/May/2020 12:34:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TaxType](
+	[ID] [int] NOT NULL,
+	[TaxTypeName] [nvarchar](50) NOT NULL,
+	[TaxTypeDescr] [nvarchar](255) NULL,
+	[TaxMethodID] [int] NOT NULL,
+ CONSTRAINT [PK_TaxType] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TaxTypeRefTable]    Script Date: 02/May/2020 12:34:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TaxTypeRefTable](
+	[ID] [int] NOT NULL,
+	[TaxTypeID] [int] NOT NULL,
+	[TaxBand] [int] NOT NULL,
+	[ValueFrom] [float] NOT NULL,
+	[ValueTo] [float] NOT NULL,
+	[TaxValue] [float] NOT NULL,
+	[TaxValueModeID] [int] NOT NULL,
+ CONSTRAINT [PK_TaxTypeRefTable] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TaxValueMode]    Script Date: 02/May/2020 12:34:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TaxValueMode](
+	[ID] [int] NOT NULL,
+	[ValueModeName] [nvarchar](50) NULL,
+ CONSTRAINT [PK_TaxValueMode] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[TaxMethod] ([ID], [TaxMethodName]) VALUES (1, N'Cummulative')
+GO
+INSERT [dbo].[TaxMethod] ([ID], [TaxMethodName]) VALUES (2, N'Single Value')
+GO
+INSERT [dbo].[TaxType] ([ID], [TaxTypeName], [TaxTypeDescr], [TaxMethodID]) VALUES (1, N'NHIF', N'NHIF', 2)
+GO
+INSERT [dbo].[TaxType] ([ID], [TaxTypeName], [TaxTypeDescr], [TaxMethodID]) VALUES (2, N'PAYE', N'PAYE', 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (1, 1, 1, 0, 5999, 150, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (2, 1, 2, 6000, 7999, 300, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (3, 1, 3, 8000, 11999, 400, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (4, 1, 4, 12000, 14999, 500, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (5, 1, 5, 15000, 19999, 600, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (6, 1, 6, 20000, 24999, 750, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (7, 1, 7, 25000, 29999, 850, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (8, 1, 8, 30000, 34999, 900, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (9, 1, 9, 35000, 39999, 950, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (10, 1, 10, 40000, 44999, 1000, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (11, 1, 11, 45000, 49999, 1100, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (12, 1, 12, 50000, 59999, 1200, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (13, 1, 13, 60000, 69999, 1300, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (14, 1, 14, 70000, 79999, 1400, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (15, 1, 15, 80000, 89999, 1500, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (16, 1, 16, 90000, 99999, 1600, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (17, 1, 17, 100000, 999999999, 1700, 1)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (18, 2, 1, 1, 24000, 0.1, 2)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (19, 2, 2, 24001, 40667, 0.15, 2)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (20, 2, 3, 40668, 57333, 0.2, 2)
+GO
+INSERT [dbo].[TaxTypeRefTable] ([ID], [TaxTypeID], [TaxBand], [ValueFrom], [ValueTo], [TaxValue], [TaxValueModeID]) VALUES (21, 2, 4, 57334, 9999999999, 0.25, 2)
+GO
+INSERT [dbo].[TaxValueMode] ([ID], [ValueModeName]) VALUES (1, N'Fixed Amount')
+GO
+INSERT [dbo].[TaxValueMode] ([ID], [ValueModeName]) VALUES (2, N'Percentage')
+GO
